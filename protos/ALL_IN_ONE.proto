@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package app;
+
+service ReportGenerator {
+  rpc gen_credit_analysis_tool (GenRequest) returns (GenReply);
+}
+
+
+// 请求：
+message GenRequest {
+  string pubGloblJnno = 1;           // 交易时间，最大长度20，格式：yyyy-MM-dd
+  string seriNo = 2;            // 交易流水，最大长度32，交易唯一标识与请求报文的保持一致
+  string reportId = 3;             // 任务ID
+  string companyName = 4;         // 公司名称
+  string htmlSdossId = 5;            // 征信报告sdoss地址（html版本）
+  string creatUser = 6;              // 任务发起用户，示例：24080740
+  repeated ReqFiles reqFiles = 7;    // 请求文件列表，用户上传的附件列表
+}
+
+message ReqFiles {
+  string fileName = 1;   // 文件名称
+  string fileUrl = 2;    // 文件地址
+}
+
+// 响应：
+message GenReply {
+  string tranCode = 1;           // 交易编码，最大长度6，根据具体接口获取
+  string chanId = 2;             // 渠道号，最大长度6，渠道：LPOBS，可以传系统编号
+  string sysId = 3;              // 系统号，最大长度32，系统编码：LPOBS，具体的子系统编号
+  string pubGloblJnno = 4;        // 全局流水号，最大长度32，全局唯一
+  string seriNo = 5;            // 系统流水号，最大长度32，全局唯一
+  string reqBizDate = 6;         // 交易日期，最大长度10，格式：YYYY-MM-DD
+  string tranCounter = 7;        // 交易柜员，最大长度32，system
+  string orgNo = 8;              // 请求机构号，最大长度32，示例：00001
+  string protocol = 9;           // 协议，最大长度32，rsf/http
+  string preReverseFlag = 10;    // 正反交易，最大长度32，示例：0
+  string legalCode = 11;         // 请求法人代码，最大长度32，示例：9999
+  string headVerNo = 12;         // 全局报文头版本号，最大长度32，示例：1.0.0
+  string preSysId = 13;          // 前手系统编号，最大长度32，跟sysId一样
+  string preSerialNo = 14;       // 前手系统流水号，最大长度32，跟serilNo一样
+  string preReqVerNo = 15;       // 请求服务版本号，最大长度32（未指定），示例：1.0.0
+  string preSubFlag = 16;        // 二次提交标志，最大长度32，示例：0
+  string reportId = 17;             // 回传任务ID
+  string dealSts = 18;              // 处理状态 (1:成功, 3:失败)
+  string dealRemark = 19;           // 描述信息
+  repeated ReportFile reportFiles = 20; // 包含生成的 OSS 文件信息
+}
+
+message ReportFile {
+  string fileName = 1;      // 文件名
+  string sdossId = 2;       // OSS ID
+}
+
+
+message ErrorDetail {
+  int64 code = 1;
+  string message = 2;
+  string type = 3;
+}
