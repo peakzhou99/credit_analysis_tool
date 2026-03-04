@@ -6,7 +6,7 @@ from typing import List, Dict, Optional
 from botocore.config import Config as BotoConfig
 from botocore.exceptions import ClientError
 
-from config import config
+from core.config import config
 
 from utils.logger_util import get_logger
 
