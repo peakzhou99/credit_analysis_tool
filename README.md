@@ -31,10 +31,10 @@ git clone https://github.com/peakzhou99/credit_analysis_tool.git
 
 cd /var/zgf/lwade_app_python-master
 
-python build_image.py --name credit_analysis_tool --tag 1.5 --runner grpc \
+python build_image.py --name credit_analysis_tool --tag 1.8 --runner grpc \
     --grpc-app-path /var/zgf/credit_analysis_tool \
     --sub-dockerfile /var/zgf/credit_analysis_tool/Dockerfile
     
-docker push harbordev.suningbank.com/llm/lwade-app/credit_analysis_tool:1.5
+docker push harbordev.suningbank.com/llm/lwade-app/credit_analysis_tool:1.8
 ```
 
