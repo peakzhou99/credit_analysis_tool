@@ -18,13 +18,15 @@ python build_proto.py --proto-path /var/zgf/credit_analysis_tool/protos/credit_a
 ```bash
 cd /var/zgf
 
-git clone https://gitclone.com/github.com/peakzhou99/credit_analysis_tool.git
+git clone https://github.com/peakzhou99/credit_analysis_tool.git
+备用：git clone https://gitclone.com/github.com/peakzhou99/credit_analysis_tool.git
 
-python build_image.py --name credit_analysis_tool --tag 1.3 --runner grpc \
+cd /var/zgf/lwade_app_python-master
+
+python build_image.py --name credit_analysis_tool --tag 1.5 --runner grpc \
     --grpc-app-path /var/zgf/credit_analysis_tool \
     --sub-dockerfile /var/zgf/credit_analysis_tool/Dockerfile
     
-    
-docker push harbordev.suningbank.com/llm/lwade-app/credit_analysis_tool:1.3
+docker push harbordev.suningbank.com/llm/lwade-app/credit_analysis_tool:1.5
 ```
 
