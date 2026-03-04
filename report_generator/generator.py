@@ -9,6 +9,7 @@ from threading import Lock
 from docx import Document
 
 from report_generator.oss_client import S3Client
+
 from utils.logger_util import get_logger
 
 logger = get_logger()
