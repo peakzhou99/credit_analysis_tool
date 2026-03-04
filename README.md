@@ -5,6 +5,14 @@ APPID credit_analysis_tool
 生成对应的 pb2 和 pb2_grpc 文件。
 
 ```bash
+
+python3 -m grpc_tools.protoc \
+  -I ./protos \
+  --python_out=./protos \
+  --grpc_python_out=./protos \
+  ./protos/credit_analysis_tool.proto
+  
+  
 python build_proto.py --proto-path /var/zgf/credit_analysis_tool/protos/credit_analysis_tool.proto
 ```
 

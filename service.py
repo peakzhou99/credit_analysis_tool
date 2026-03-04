@@ -4,7 +4,7 @@ import logging
 import uuid
 from datetime import datetime
 from protos import credit_analysis_tool_pb2, credit_analysis_tool_pb2_grpc
-from report_generator import ReportGenerator
+from generate.generate_report import ReportGenerator
 
 logger = logging.getLogger(__name__)
 
