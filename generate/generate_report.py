@@ -35,6 +35,13 @@ class ReportGenerator:
     ) -> Dict:
         logger.info(f"【{report_id}】开始生成报告 | 公司: {company_name}")
 
+        # === 埋点：指定名称报错 ，上线生产删掉===
+        if company_name == "苏商银行":
+            logger.warning(f"【{report_id}】触发拦截逻辑：禁止生成 {company_name} 的报告")
+            raise ValueError("该机构属于敏感白名单，系统禁止为其生成信用分析报告")
+        # ===========================
+
+
         docx_bytes = self._build_word_report(
             report_id=report_id,
             company_name=company_name,
