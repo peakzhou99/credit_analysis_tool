@@ -21,7 +21,7 @@ python build_proto.py --proto-path /var/zgf/credit_analysis_tool/protos/credit_a
 
 ### 镜像制作
 
-在 1.1.32.161 平台上使用如下命令制作镜像：
+在 10.1.32.161 平台上使用如下命令制作镜像：
 
 ```bash
 cd /var/zgf
